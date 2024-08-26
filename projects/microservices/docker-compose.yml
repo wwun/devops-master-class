@@ -1,15 +1,18 @@
 version: '3.7'
 services:
+  #este archivo usa docker compose y cada bloque de este archivo yml tiene en formato YAML el comando que se ha estado usando para ejecutar un container
+  #docker run -d -p 8000:8000 --name=currency-exchange --network=currency-compose-network wwun/01-currency-exchange-microservice-basic:0.0.1-Release
   currency-exchange:
-    image: in28min/currency-exchange:0.0.1-RELEASE
+    image: wwun/01-currency-exchange-microservice-basic:0.0.1-Release
     ports:
       - "8000:8000"
     restart: always
     networks:
-      - currency-compose-network
+      - currency-compose-network  #creating a network
 
+  #docker run -d -p 8100:8100 --name=currency-conversion --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --network=currency-compose-network wwun/02-currency-conversion-microservice-basic:0.0.1-Release
   currency-conversion:
-    image: in28min/currency-conversion:0.0.1-RELEASE
+    image: wwun/02-currency-conversion-microservice-basic:0.0.1-Release
     ports:
       - "8100:8100"
     restart: always
