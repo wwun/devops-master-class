@@ -23,6 +23,6 @@ services:
     networks:
       - currency-compose-network
   
-# Networks to be created to facilitate communication between containers
+# Networks to be created to facilitate communication between containers, see what is stablished on each service
 networks:
   currency-compose-network:
