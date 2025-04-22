@@ -68,4 +68,4 @@ spec:
   selector:
     app: currency-exchange
   sessionAffinity: None #CHANGE
-  type: LoadBalancer
+  type: NodePort  #se cambia LoadBalancer a NodePort para qe solo haya un loadbalancer qe redireccione al resto

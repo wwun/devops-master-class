@@ -29,10 +29,10 @@ spec:
           - name: CURRENCY_EXCHANGE_SERVICE_HOST
             #value: http://currency-exchange #en lugar de poner el valor del host en duro para qe el otro servicio se pueda conectar con este, se habilita valueFrom para qe tome la configuración de configMap
         
-        #     valueFrom: 
-        #       configMapKeyRef:
-        #         key: CURRENCY_EXCHANGE_SERVICE_HOST
-        #         name: currency-conversion-config-map
+            valueFrom: 
+              configMapKeyRef:
+                key: CURRENCY_EXCHANGE_SERVICE_HOST
+                name: currency-conversion-config-map
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
@@ -51,4 +51,4 @@ spec:
   selector:
     app: currency-conversion
   sessionAffinity: None #CHANGE
-  type: LoadBalancer
+  type: NodePort  #cambia de LoadBalancer a NodePort para qe solo haya un loadbalancer qe redireccione el resto
